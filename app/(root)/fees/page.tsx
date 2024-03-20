@@ -21,7 +21,7 @@ const Fees = () => {
 
     return (
         <>
-         <SignedIn> 
+
         <div>
             <div className="head-text text-left">Academic Fees</div>
             <div className='flex flex-col justify-center items-center max-h-full gap-2'>
@@ -33,10 +33,7 @@ const Fees = () => {
             {/* You can optionally include other content here */}
             </div>
         </div>
-        </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
+
         </>
     );
 };

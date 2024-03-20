@@ -5,14 +5,14 @@ import { currentUser } from "@clerk/nextjs";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/nextjs";
-
 import ListResult from "@/components/cards/ListResult";
+
+// import dynamic from "next/dynamic";
+
+// const ListResult  = dynamic(() => import('../../../../components/cards/ListResult'), {
+//   ssr: false,
+//   loading: () => <p className="no-result">Loading...</p> 
+// })
 
 async function page({params}: {params:{name:string}}) {
 
@@ -39,17 +39,14 @@ async function page({params}: {params:{name:string}}) {
     
     return (
       <>
-       <SignedIn> 
+
       <main>      
 
               <ListResult name={params.name} pin={userInfo.pinnumber} firstname={user.firstName} lastname={user.lastName}
               image={user.imageUrl}
               />
       </main>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
+
       </>
     );
 }

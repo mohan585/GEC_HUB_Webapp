@@ -3,8 +3,10 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import {
   ClerkProvider,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
 } from "@clerk/nextjs";
-
 import Topbar from "@/components/shared/Topbar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
@@ -29,6 +31,7 @@ export default function RootLayout({
       <head>
       </head>
       <body className={inter.className}>
+      <SignedIn> 
         <Topbar />
 
         <main className="flex flex-row">
@@ -45,6 +48,10 @@ export default function RootLayout({
         </main>
         
         <Bottombar />
+        </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
         </body>
     </html>
 

@@ -3,12 +3,6 @@ import { currentUser } from "@clerk/nextjs";
 
 import Searchbar from "@/components/shared/Searchbar";
 import Pagination from "@/components/shared/Pagination";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/nextjs";
 
 import { fetchUser,fetchSearchResults } from "@/lib/actions/user.actions";
 import ResultCard from "@/components/cards/ResultCard";
@@ -37,7 +31,7 @@ async function Page({
 
   return (
     <>
-    <SignedIn> 
+
     <section>
       
       <h1 className='head-text mb-10'>Search</h1>
@@ -47,10 +41,7 @@ async function Page({
       <SearchResults query={searchParams.q} />
 
     </section>
-    </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
+
       </>
   );
 }

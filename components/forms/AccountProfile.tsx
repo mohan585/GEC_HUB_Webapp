@@ -111,7 +111,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
     return(
 <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-start gap-10">
-        <FormField
+        {/* <FormField
           control={form.control}
           name="profile_photo"
           render={({ field }) => (
@@ -140,7 +140,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}

@@ -1,12 +1,6 @@
 "use client"
 import ResultCard from '@/components/cards/ResultCard';
 import React, { useState, useEffect } from 'react';
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/nextjs";
 import Image from 'next/image';
 
 export default function Home() {
@@ -38,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <SignedIn> 
+
         <h1 className='head-text text-left'>Results</h1>
           
         <section className='mt-9 flex flex-col gap-10'>
@@ -58,10 +52,7 @@ export default function Home() {
             </>
           )}
         </section>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
+
     </>
   )
 }
