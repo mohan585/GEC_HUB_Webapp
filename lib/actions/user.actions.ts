@@ -17,11 +17,10 @@ interface Params {
 
 export async function updateUser({
     userId,
-    username,
+
     name,
     pinnumber,
     bio,
-    image,
     path,
 }: Params
     ): Promise<void> {
@@ -31,11 +30,12 @@ export async function updateUser({
     try {
     await User.findOneAndUpdate(
         { id: userId },
-        {username: username.toLowerCase(),
+        {
+
         name,
         pinnumber,
         bio,
-        image,
+
         onboarded: true,
 
         

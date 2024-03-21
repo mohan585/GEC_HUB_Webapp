@@ -28,19 +28,18 @@ interface Props {
     user: {
         id: string;
         objectId: string;
-        username: string;
         pinnumber: string;
         name: string;
         bio: string;
-        image: string;
+
     };
     btnTitle: string;
 }
 const AccountProfile = ({ user, btnTitle}:Props) => {
 
 
-    const [files, setFiles ] = useState<File[]>([])
-    const { startUpload } = useUploadThing("media");
+    // const [files, setFiles ] = useState<File[]>([])
+    // const { startUpload } = useUploadThing("media");
 
     const router = useRouter();
     const pathname = usePathname();
@@ -48,9 +47,9 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
     const form = useForm({
         resolver: zodResolver(UserValidation),
         defaultValues: {
-            profile_photo: user?.image || "",
+            // profile_photo: user?.image || "",
             name: user?.name || "", 
-            username: user?.username || "",
+            // username: user?.username || "",
             pinnumber: user?.pinnumber || "",
             bio: user?.bio || ""
         }
@@ -58,25 +57,23 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
 
 
     const onSubmit = async (values: z.infer<typeof UserValidation>) => {
-      const blob = values.profile_photo;
+    //   const blob = values.profile_photo;
   
-      const hasImageChanged = isBase64Image(blob);
-      if (hasImageChanged) {
-        const imgRes = await startUpload(files);
+    //   const hasImageChanged = isBase64Image(blob);
+    //   if (hasImageChanged) {
+    //     const imgRes = await startUpload(files);
         
-        // console.log(imgRes);
-        if (imgRes && imgRes[0].fileUrl) {
-          values.profile_photo = imgRes[0].fileUrl;
-        }
-      }
+    //     // console.log(imgRes);
+    //     if (imgRes && imgRes[0].fileUrl) {
+    //       values.profile_photo = imgRes[0].fileUrl;
+    //     }
+    //   }
  
     await updateUser({
       userId: user.id,
-    username: values.username,
     name: values.name,
     pinnumber: values.pinnumber, 
     bio: values.bio,
-    image: values.profile_photo,
     path: pathname,
     });
 
@@ -87,26 +84,26 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
     }
 };
 
-      const handleImage = (e: ChangeEvent<HTMLInputElement>,fieldChange: (value: string) => void) => {
-        e.preventDefault();
+      // const handleImage = (e: ChangeEvent<HTMLInputElement>,fieldChange: (value: string) => void) => {
+      //   e.preventDefault();
 
-        const fileReader = new FileReader();
+      //   const fileReader = new FileReader();
 
-        if(e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0];
+      //   if(e.target.files && e.target.files.length > 0) {
+      //       const file = e.target.files[0];
 
-            setFiles(Array.from(e.target.files));
+      //       setFiles(Array.from(e.target.files));
 
-            if(!file.type.includes('image')) return;
+      //       if(!file.type.includes('image')) return;
 
-            fileReader.onload = async (event) => {
-                const imageDataUrl = event.target?.result?.toString() || '';
+      //       fileReader.onload = async (event) => {
+      //           const imageDataUrl = event.target?.result?.toString() || '';
 
-                fieldChange(imageDataUrl);
-            }
-            fileReader.readAsDataURL(file);
-        }
-      }
+      //           fieldChange(imageDataUrl);
+      //       }
+      //       fileReader.readAsDataURL(file);
+      //   }
+      // }
 
     return(
 <Form {...form}>
@@ -183,7 +180,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
               PIN No.
             </FormLabel>
             <FormControl>
-                <Input type="text" className="account-form_input no-focus uppercase" {...field}  />
+                <Input type="text" className="account-form_input no-focus" {...field}  />
               </FormControl> 
               <FormMessage />
             </FormItem>
