@@ -208,7 +208,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
           )}
         />
 
-        <Button type="submit" className="bg-primary-500">{isSubmitting ? "Loading..." : btnTitle}</Button>
+        <Button type="submit" className="bg-primary-500">{isSubmitting ? <Image src="/assets/loader.svg" alt='loader image' width={34} height={34} /> : btnTitle}</Button>
       </form>
     </Form>
     )
