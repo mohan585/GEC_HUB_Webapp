@@ -39,7 +39,7 @@ interface Props {
 }
 const AccountProfile = ({ user, btnTitle}:Props) => {
 
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
     // const [files, setFiles ] = useState<File[]>([])
     // const { startUpload } = useUploadThing("media");
 
@@ -59,6 +59,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
 
 
     const onSubmit = async (values: z.infer<typeof UserValidation>) => {
+      setIsSubmitting(true);
     //   const blob = values.profile_photo;
   
     //   const hasImageChanged = isBase64Image(blob);
@@ -207,7 +208,7 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
           )}
         />
 
-        <Button type="submit" className="bg-primary-500">{btnTitle}</Button>
+        <Button type="submit" className="bg-primary-500">{isSubmitting ? "Loading..." : btnTitle}</Button>
       </form>
     </Form>
     )
