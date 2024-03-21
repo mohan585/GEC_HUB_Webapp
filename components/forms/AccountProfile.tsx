@@ -28,6 +28,8 @@ interface Props {
     user: {
         id: string;
         objectId: string;
+        username: string;
+        image: string;
         pinnumber: string;
         name: string;
         bio: string;
@@ -47,9 +49,9 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
     const form = useForm({
         resolver: zodResolver(UserValidation),
         defaultValues: {
-            // profile_photo: user?.image || "",
+            profile_photo: user?.image || "",
             name: user?.name || "", 
-            // username: user?.username || "",
+            username: user?.username || "",
             pinnumber: user?.pinnumber || "",
             bio: user?.bio || ""
         }
@@ -72,6 +74,8 @@ const AccountProfile = ({ user, btnTitle}:Props) => {
     await updateUser({
       userId: user.id,
     name: values.name,
+    username: values.username,
+    image: values.profile_photo,
     pinnumber: values.pinnumber, 
     bio: values.bio,
     path: pathname,

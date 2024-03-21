@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 async function Page() {
     const user = await currentUser();
+    console.log()
     if(!user) return null;
 
     const userInfo = await fetchUser(user.id);
@@ -13,7 +14,7 @@ async function Page() {
     const userData = {
         id: user?.id,
         objectId:userInfo?._id,
-        username:userInfo?.username || user?.firstName || "",
+        username: user?.username || "",
         bio: userInfo?.bio || "",
         image: userInfo?.image || user?.imageUrl,
 
