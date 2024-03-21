@@ -27,7 +27,8 @@ function ThreadCard({
                         alt="logo pic"
                         fill
                         className="cursor-pointer rounded-full "
-                        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 100vw"
+                        priority
+                        // sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 100vw"
                         />
                     </div>
 
